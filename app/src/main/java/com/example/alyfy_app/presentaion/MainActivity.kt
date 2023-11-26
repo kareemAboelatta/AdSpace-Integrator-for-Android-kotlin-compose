@@ -29,6 +29,7 @@ import com.gamify.space.Gamify.GamifyListener
 
 
 private const val TAG = "MainActivity"
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,10 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onIconShowFailed(placementId: String, error: GamifyError) {
-                Log.d(TAG, "Icon show failed for placementId: $placementId with error: ${error.msg}")
+                Log.d(
+                    TAG,
+                    "Icon show failed for placementId: $placementId with error: ${error.msg}"
+                )
             }
 
             override fun onIconClick(placement: String) {
@@ -67,7 +71,10 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onInteractiveOpenFailed(placementId: String, error: GamifyError) {
-                Log.d(TAG, "Interactive ad open failed for placementId: $placementId with error: ${error.msg}")
+                Log.d(
+                    TAG,
+                    "Interactive ad open failed for placementId: $placementId with error: ${error.msg}"
+                )
             }
 
             override fun onInteractiveClose(placement: String) {
@@ -79,7 +86,10 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onOfferWallOpenFailed(placementId: String, error: GamifyError) {
-                Log.d(TAG, "Offer Wall open failed for placementId: $placementId with error: ${error.msg}")
+                Log.d(
+                    TAG,
+                    "Offer Wall open failed for placementId: $placementId with error: ${error.msg}"
+                )
             }
 
             override fun onOfferWallClose(placementId: String) {
@@ -91,7 +101,10 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onGSpaceOpenFailed(placementId: String, error: GamifyError) {
-                Log.d(TAG, "GSpace open failed for placementId: $placementId with error: ${error.msg}")
+                Log.d(
+                    TAG,
+                    "GSpace open failed for placementId: $placementId with error: ${error.msg}"
+                )
             }
 
             override fun onGSpaceClose(placementId: String) {
@@ -99,7 +112,10 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onUserInteraction(placementId: String, interaction: String) {
-                Log.d(TAG, "User interaction for placementId: $placementId with interaction: $interaction")
+                Log.d(
+                    TAG,
+                    "User interaction for placementId: $placementId with interaction: $interaction"
+                )
             }
         })
 
@@ -116,11 +132,12 @@ class MainActivity : ComponentActivity() {
     }
 
     companion object {
+
+        //todo (add them to git  ignore)
         private const val APP_KEY = "O6Z1x4LpMl6jKSmq1GJdMhZZB999Otk3"
         const val PLACEMENT_ID = "10882"
         private const val USER_ID = "Your Custom UserId" // Replace with the actual user ID
     }
-
 
 
 }
@@ -134,7 +151,7 @@ fun MainScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
         HorizontalPager(
             state = pagerState,
-            pageCount =  companies.size,
+            pageCount = companies.size,
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(horizontal = 100.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -147,11 +164,11 @@ fun MainScreen() {
 
         HorizontalPager(
             state = pagerState,
-            pageCount =  companies.size,
+            pageCount = companies.size,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp)
-        ){i->
+        ) { i ->
             Text(
                 text = companies[pagerState.currentPage],
                 style = MaterialTheme.typography.headlineMedium,
@@ -174,7 +191,6 @@ fun RoulaxPlaceholder() {
         Text("Roulax", style = MaterialTheme.typography.headlineMedium)
     }
 }
-
 
 
 @Composable
@@ -207,13 +223,19 @@ fun ShowAdIcon() {
                         Log.d(TAG, "SDK initialization failed: ${error.msg}")
                     }
 
-                    
+
                     override fun onIconLoadFailed(placement: String, error: GamifyError) {
-                        Log.d(TAG, "Icon load failed for placement: $placement with error: ${error.msg}")
+                        Log.d(
+                            TAG,
+                            "Icon load failed for placement: $placement with error: ${error.msg}"
+                        )
                     }
 
                     override fun onIconShowFailed(placementId: String, error: GamifyError) {
-                        Log.d(TAG, "Icon show failed for placementId: $placementId with error: ${error.msg}")
+                        Log.d(
+                            TAG,
+                            "Icon show failed for placementId: $placementId with error: ${error.msg}"
+                        )
                     }
 
                     override fun onIconClick(placement: String) {
@@ -225,7 +247,10 @@ fun ShowAdIcon() {
                     }
 
                     override fun onInteractiveOpenFailed(placementId: String, error: GamifyError) {
-                        Log.d(TAG, "Interactive ad open failed for placementId: $placementId with error: ${error.msg}")
+                        Log.d(
+                            TAG,
+                            "Interactive ad open failed for placementId: $placementId with error: ${error.msg}"
+                        )
                     }
 
                     override fun onInteractiveClose(placement: String) {
@@ -237,7 +262,10 @@ fun ShowAdIcon() {
                     }
 
                     override fun onOfferWallOpenFailed(placementId: String, error: GamifyError) {
-                        Log.d(TAG, "Offer Wall open failed for placementId: $placementId with error: ${error.msg}")
+                        Log.d(
+                            TAG,
+                            "Offer Wall open failed for placementId: $placementId with error: ${error.msg}"
+                        )
                     }
 
                     override fun onOfferWallClose(placementId: String) {
@@ -249,7 +277,10 @@ fun ShowAdIcon() {
                     }
 
                     override fun onGSpaceOpenFailed(placementId: String, error: GamifyError) {
-                        Log.d(TAG, "GSpace open failed for placementId: $placementId with error: ${error.msg}")
+                        Log.d(
+                            TAG,
+                            "GSpace open failed for placementId: $placementId with error: ${error.msg}"
+                        )
                     }
 
                     override fun onGSpaceClose(placementId: String) {
@@ -257,7 +288,10 @@ fun ShowAdIcon() {
                     }
 
                     override fun onUserInteraction(placementId: String, interaction: String) {
-                        Log.d(TAG, "User interaction for placementId: $placementId with interaction: $interaction")
+                        Log.d(
+                            TAG,
+                            "User interaction for placementId: $placementId with interaction: $interaction"
+                        )
                     }
 
                     // ... Implement other GamifyListener methods
