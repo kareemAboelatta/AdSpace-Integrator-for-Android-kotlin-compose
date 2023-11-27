@@ -1,6 +1,15 @@
+import java.util.*
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+}
+
+// Load properties from keys.properties file
+val keysPropertiesFile = rootProject.file("keys.properties")
+val keysProperties = Properties()
+if (keysPropertiesFile.exists()) {
+    keysProperties.load(keysPropertiesFile.inputStream())
 }
 
 android {
@@ -18,6 +27,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        // Access properties and set them as BuildConfig fields
+        buildConfigField("String", "APP_KEY", "\"${keysProperties["APP_KEY"]}\"")
+        buildConfigField("String", "PLACEMENT_ID", "\"${keysProperties["PLACEMENT_ID"]}\"")
+
+
     }
 
     buildTypes {
@@ -38,7 +52,11 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+
     }
+
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }

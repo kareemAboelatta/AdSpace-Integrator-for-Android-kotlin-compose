@@ -23,6 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.alyfy_app.Constants.APP_KEY
+import com.example.alyfy_app.Constants.PLACEMENT_ID
 import com.gamify.space.Gamify
 import com.gamify.space.GamifyError
 import com.gamify.space.Gamify.GamifyListener
@@ -133,9 +135,7 @@ class MainActivity : ComponentActivity() {
 
     companion object {
 
-        //todo (add them to git  ignore)
-        private const val APP_KEY = "O6Z1x4LpMl6jKSmq1GJdMhZZB999Otk3"
-        const val PLACEMENT_ID = "10882"
+
         private const val USER_ID = "Your Custom UserId" // Replace with the actual user ID
     }
 
@@ -203,7 +203,7 @@ fun ShowAdIcon() {
                 Gamify.setListener(object : GamifyListener {
                     override fun onInitSuccess() {
                         Log.d(TAG, "SDK initialized successfully")
-                        Gamify.loadIcon(MainActivity.PLACEMENT_ID)
+                        Gamify.loadIcon(PLACEMENT_ID)
 
                     }
 
