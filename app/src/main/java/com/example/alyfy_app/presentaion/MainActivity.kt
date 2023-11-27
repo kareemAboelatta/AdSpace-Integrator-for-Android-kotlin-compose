@@ -17,10 +17,17 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.alyfy_app.Constants.APP_KEY
@@ -134,50 +141,71 @@ class MainActivity : ComponentActivity() {
     }
 
     companion object {
-
-
         private const val USER_ID = "Your Custom UserId" // Replace with the actual user ID
     }
 
 
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen() {
     val pagerState = rememberPagerState()
     val companies = listOf("OKSpin", "Roulax") // List of company names
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        HorizontalPager(
-            state = pagerState,
-            pageCount = companies.size,
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(horizontal = 100.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) { page ->
-            when (page) {
-                0 -> ShowAdIcon() // OKSpin
-                1 -> RoulaxPlaceholder() // Roulax
-            }
-        }
-
-        HorizontalPager(
-            state = pagerState,
-            pageCount = companies.size,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(16.dp)
-        ) { i ->
-            Text(
-                text = companies[pagerState.currentPage],
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = {
+                    Text(
+                        text = "Swipe Horizontal too see another Ad Company",
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            color = Color.White,
+                            fontFamily = FontFamily.Monospace,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                }
             )
         }
+    ) {padding->
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)) {
+            HorizontalPager(
+                state = pagerState,
+                pageCount = companies.size,
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(horizontal = 100.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) { page ->
+                when (page) {
+                    0 -> GamifyAdIcon() // OKSpin
+                    1 -> RoulaxPlaceholder() // Roulax
+                }
+            }
+
+            HorizontalPager(
+                state = pagerState,
+                pageCount = companies.size,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = companies[pagerState.currentPage],
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+            }
 
 
+        }
     }
+
 }
 
 @Composable
@@ -194,7 +222,7 @@ fun RoulaxPlaceholder() {
 
 
 @Composable
-fun ShowAdIcon() {
+fun GamifyAdIcon() {
     val context = LocalContext.current
     AndroidView(
         factory = { ctx ->
