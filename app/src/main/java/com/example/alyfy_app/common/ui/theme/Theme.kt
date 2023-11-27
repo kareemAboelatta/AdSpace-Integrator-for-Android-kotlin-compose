@@ -1,4 +1,4 @@
-package com.example.alyfy_app.presentaion.theme
+package com.example.alyfy_app.common.ui.theme
 
 import android.app.Activity
 import android.os.Build

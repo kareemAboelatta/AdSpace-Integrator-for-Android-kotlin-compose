@@ -1,4 +1,4 @@
-package com.example.alyfy_app.presentaion.theme
+package com.example.alyfy_app.common.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
