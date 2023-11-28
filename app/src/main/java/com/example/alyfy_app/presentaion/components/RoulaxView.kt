@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -77,16 +78,18 @@ fun RoulaxSplashAd(context: Context, unitId: String) {
                             adView = splashAd.getSplashView(context as Activity)
                         }
 
-                        Log.d(TAG, "object : RXSdkAd.RXSplashAdListener:success 11 ")
+                        Log.d(TAG, "object : RXSdkAd.RXSplashAdListener:success  ")
 
                     }
 
                     override fun failure(adInfo: RXAdInfo, error: RXError) {
-                        Log.e(TAG, "Failed to load splash ad:  1 ${error.msg}")
+                        Log.e(TAG, "Failed to load splash ad:   ${error.msg}")
+
+                        Toast.makeText(context, "Failed to load splash ad:   ${error.msg}", Toast.LENGTH_LONG).show()
                     }
 
                     override fun timeout(adInfo: RXAdInfo) {
-                        Log.e(TAG, "Splash ad load timeout1 ")
+                        Log.e(TAG, "Splash ad load timeout ")
                     }
                 }
             )
