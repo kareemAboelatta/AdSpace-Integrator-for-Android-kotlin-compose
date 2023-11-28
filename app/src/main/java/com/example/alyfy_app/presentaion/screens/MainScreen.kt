@@ -1,5 +1,6 @@
 package com.example.alyfy_app.presentaion.screens
 
+import android.content.Context
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,14 +21,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.alyfy_app.common.Constant
 import com.example.alyfy_app.presentaion.AdViewModel
 import com.example.alyfy_app.presentaion.components.GamifyAdIcon
-import com.example.alyfy_app.presentaion.components.RoulaxView
+import com.example.alyfy_app.presentaion.components.RoulaxSplashAd
+
 
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
+    context:Context,
     adViewModel: AdViewModel
 ) {
     val pagerState = rememberPagerState()
@@ -49,7 +53,8 @@ fun MainScreen(
             ) { page ->
                 when (page) {
                     0 -> GamifyAdIcon() // OKSpin
-                    1 -> RoulaxView() // Roulax
+                    1 -> RoulaxSplashAd(context = context, unitId = Constant.UNIT_ID)
+
                 }
             }
 

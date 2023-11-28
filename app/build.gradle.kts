@@ -30,6 +30,8 @@ android {
         // Access properties and set them as BuildConfig fields
         buildConfigField("String", "APP_KEY", "\"${keysProperties["APP_KEY"]}\"")
         buildConfigField("String", "PLACEMENT_ID", "\"${keysProperties["PLACEMENT_ID"]}\"")
+        buildConfigField("String", "ROULAX_APP_ID", "\"${keysProperties["ROULAX_APP_ID"]}\"")
+        buildConfigField("String", "UNIT_ID", "\"${keysProperties["UNIT_ID"]}\"")
 
 
     }
@@ -77,6 +79,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -86,9 +90,22 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
 
+//    implementation(name: "rsdk-release_3015", ext = "aar")
+
+//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+
+
+    implementation(files("../rsdk-release_3015.aar"))
+
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     implementation( group = "com.google.android.gms", name= "play-services-ads", version= "15.0.0")
+    implementation ("androidx.appcompat:appcompat:1.3.0")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.3")
 
+//If need offerwall ads, these implementations are necessary.
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.cardview:cardview:1.0.0")
 
     implementation ("com.gamify:space:3.0.4")
 
