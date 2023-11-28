@@ -1,4 +1,4 @@
-# AdSpace Integrator for Android
+# AdSpace Integrator for Android Kotlin jetback compose
 
 ## Introduction
 AdSpace Integrator for Android is a demonstration app that illustrates how to incorporate multiple ad SDKs within a single Android application. This project currently includes integrations for the Roulax and OKSpin SDKs.
